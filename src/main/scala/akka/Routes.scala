@@ -27,20 +27,26 @@ object Routes {
 
         val resultFuture = {
           val system = ActorSystem("System")
-          service match {
-            case "nails" =>
-              val nailsActor = system.actorOf(Props[NailsActor], name = "NailsActor")
-              nailsActor ! requestJson
-            case "hairCut" =>
-              val hairActor = system.actorOf(Props[HairActor], name = "HairActor")
-              hairActor ! requestJson
-            case "brows" =>
-              val browsActor = system.actorOf(Props[BrowsActor], name = "BrowsActor")
-              browsActor ! requestJson
-            case Exception => logger.info("unknown service")
+          val actorResultFuture = {
+            service match {
+              case "nails" =>
+                val nailsActor = system.actorOf(Props[NailsActor], name = "NailsActor")
+                nailsActor ! requestJson
+                Future.successful("{success: true, message: new nails session}")
+              case "hairCut" =>
+                val hairActor = system.actorOf(Props[HairActor], name = "HairActor")
+                hairActor ! requestJson
+                Future.successful("{success: true, message: new hair cut session}")
+              case "brows" =>
+                val browsActor = system.actorOf(Props[BrowsActor], name = "BrowsActor")
+                browsActor ! requestJson
+                Future.successful("{success: true, message: new brows session}")
+              case _ =>
+                logger.info("unknown service")
+                Future.successful("{success: false, message: unknown service}")
+            }
           }
-
-          Future.successful("success")
+          Future.successful(actorResultFuture)
         }
         complete(resultFuture)
       }

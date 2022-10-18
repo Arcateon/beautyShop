@@ -3,25 +3,26 @@ package mongo
 import com.typesafe.config._
 import org.mongodb.scala.MongoClient.DEFAULT_CODEC_REGISTRY
 import org.mongodb.scala.bson.codecs.Macros
-import org.mongodb.scala.{ConnectionString, MongoClient, MongoClientSettings, MongoCollection, MongoDatabase}
+import org.mongodb.scala.{ConnectionString, MongoClient, MongoClientSettings, MongoCollection, MongoDatabase, documentToUntypedDocument}
 import com.mongodb.{ServerApi, ServerApiVersion}
 import com.typesafe.scalalogging.Logger
 import org.bson.codecs.configuration.CodecRegistries.{fromProviders, fromRegistries}
 import org.bson.codecs.configuration.{CodecProvider, CodecRegistry}
 import org.json4s.Formats
-import org.json4s.jackson.Serialization
 import org.mongodb.scala.model.Filters._
 import org.slf4j.LoggerFactory
 import utils.Cases.InputData
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.reflect.Manifest.Any
 
 
 object MongoUtils {
 
   implicit val formats: Formats = org.json4s.DefaultFormats
     .withLong.withDouble.withStrictOptionParsing
+  private val logger = Logger(LoggerFactory.getLogger(this.getClass))
 
   val conf: Config = ConfigFactory.
     load("application.conf").
@@ -33,7 +34,6 @@ object MongoUtils {
   //
   //--------------------
 
-  private val logger = Logger(LoggerFactory.getLogger(this.getClass))
   private val uri: String = conf.getString("url")
   private val db: String = conf.getString("dataBase")
 
@@ -57,9 +57,24 @@ object MongoUtils {
     fromRegistries(fromProviders(codecProvider)
       , DEFAULT_CODEC_REGISTRY)
 
-  private val sessions: MongoCollection[InputData] = dataBase
+  //---------------------
+  //
+  // Collections
+  //
+  //---------------------
+
+  private val allSessions: MongoCollection[InputData] = dataBase
     .withCodecRegistry(codecRegistry)
-    .getCollection[InputData]("sessions")
+    .getCollection[InputData]("allSessions")
+  val nailSessions: MongoCollection[InputData] = dataBase
+    .withCodecRegistry(codecRegistry)
+    .getCollection[InputData]("nailSessions")
+  val hairSessions: MongoCollection[InputData] = dataBase
+    .withCodecRegistry(codecRegistry)
+    .getCollection[InputData]("hairSessions")
+  val browsSessions: MongoCollection[InputData] = dataBase
+    .withCodecRegistry(codecRegistry)
+    .getCollection[InputData]("browsSessions")
 
   //---------------------
   //
@@ -67,11 +82,26 @@ object MongoUtils {
   //
   //---------------------
 
-  def insertNewSession(name: String, service: String, date: String,
-                       time: String, phone: String): Future[Any] = {
+  def insertNewSession(collection: MongoCollection[InputData], name: String, service: String,
+                       date: String, time: String, phone: String): Future[Boolean] = {
 
-    val document = InputData(name, service, phone, date: String, time: String)
-    sessions.insertOne(document).toFuture()
+    val documentsWithDateF = allSessions.find(and(equal("service", service),
+      equal("date", date), equal("time", time))).toFuture
+
+    documentsWithDateF flatMap { document =>
+      if(document.isEmpty) {
+        val document = InputData(name, service, phone, date: String, time: String)
+        allSessions.insertOne(document).toFuture
+        collection.insertOne(document).toFuture
+        Future.successful(true)
+      } else {
+        Future.successful(false)
+      }
+    } recoverWith {
+        case ex : Exception => logger.info(s"$ex")
+        Future.successful(false)
+    }
+
   }
 
 }

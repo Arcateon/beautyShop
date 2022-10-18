@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7e35c8a-c409-4e81-89d9-03a65c689c09" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/beautyShop-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/beautyShop-build.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/beautyShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/beautyShop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
+    <list default="true" id="e7e35c8a-c409-4e81-89d9-03a65c689c09" name="Changes" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/Dependencies.scala" beforeDir="false" afterPath="$PROJECT_DIR$/project/Dependencies.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/akka/Actors.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/akka/Actors.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/akka/Routes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/akka/Routes.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/akka/Server.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/akka/Server.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/mongo/MongoUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/mongo/MongoUtils.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/utils/Cases.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/utils/Cases.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +75,14 @@
       <option name="presentableId" value="Default" />
       <updated>1666086500900</updated>
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1666110730496</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666110730496</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -94,5 +95,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>

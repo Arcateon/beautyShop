@@ -18,7 +18,8 @@ object Actors {
     def receive: Receive = {
       case body: JValue =>
         val document = body.extract[InputData]
-        MongoUtils.insertNewSession(document.name, document.service,
+        val collection = MongoUtils.nailSessions
+        MongoUtils.insertNewSession(collection, document.name, document.service,
           document.date, document.time, document.phone)
       case _ => logger.info("received unknown message")
     }
@@ -29,7 +30,8 @@ object Actors {
     def receive: Receive = {
       case body: JValue =>
         val document = body.extract[InputData]
-        MongoUtils.insertNewSession(document.name, document.service,
+        val collection = MongoUtils.hairSessions
+        MongoUtils.insertNewSession(collection, document.name, document.service,
           document.date, document.time, document.phone)
       case _ => logger.info("received unknown message")
     }
@@ -40,7 +42,8 @@ object Actors {
     def receive: Receive = {
       case body: JValue =>
         val document = body.extract[InputData]
-        MongoUtils.insertNewSession(document.name, document.service,
+        val collection = MongoUtils.browsSessions
+        MongoUtils.insertNewSession(collection, document.name, document.service,
           document.date, document.time, document.phone)
       case _ => logger.info("received unknown message")
     }
