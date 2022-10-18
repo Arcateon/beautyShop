@@ -63,7 +63,7 @@ object MongoUtils {
   //
   //---------------------
 
-  private val allSessions: MongoCollection[InputData] = dataBase
+  val allSessions: MongoCollection[InputData] = dataBase
     .withCodecRegistry(codecRegistry)
     .getCollection[InputData]("allSessions")
   val nailSessions: MongoCollection[InputData] = dataBase
