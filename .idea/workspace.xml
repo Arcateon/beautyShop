@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7e35c8a-c409-4e81-89d9-03a65c689c09" name="Changes" comment="checking date of session to exist">
+    <list default="true" id="e7e35c8a-c409-4e81-89d9-03a65c689c09" name="Changes" comment="checking date of session to exist (fix)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/akka/Actors.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/akka/Actors.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/akka/Routes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/akka/Routes.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/mongo/MongoUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/mongo/MongoUtils.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +37,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/arcateon/IdeaProjects/AkkaFeedbackV3&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/home/arcateon/IdeaProjects/beautyShop"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Server" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="akka.Server" />
@@ -88,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666124731748</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="checking date of session to exist (fix)">
+      <created>1666127049414</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666127049414</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,6 +112,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="checking date of session to exist" />
-    <option name="LAST_COMMIT_MESSAGE" value="checking date of session to exist" />
+    <MESSAGE value="checking date of session to exist (fix)" />
+    <option name="LAST_COMMIT_MESSAGE" value="checking date of session to exist (fix)" />
   </component>
 </project>
